@@ -17,10 +17,13 @@ You would call this file *name.php* and save it in *application/controllers*
 
 To add a helper class and make it loadable through 'this->load('helper', 'name');'
 
-	<?php
-	class Name_Helper extends Controller_Template
-	{
-	}
+
+~~~~
+<?php
+class Name_Helper extends Controller_Template
+{
+}
+~~~~
 
 You would call this file *name.php* and save it in *core/helper*
 
