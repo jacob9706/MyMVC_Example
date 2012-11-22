@@ -8,6 +8,10 @@ To create a new controller you want to do the following
 
 ```php
 <?php
+/*
+ * application/controllers/name.php
+ */
+ 
 class Name_Controller extends Controller_Template
 {
 }
@@ -23,6 +27,7 @@ To add a helper class and make it loadable through 'this->load('helper', 'name')
 /*
  * system/helper/Name_Helper.php
  */
+
 class Name_Helper extends Controller_Template
 {
 }
@@ -37,6 +42,7 @@ To use this new helper you would do the folloing
 /*
  * application/controllers/name.php
  */
+
 class Name_Controller extends Controller_Template
 {
     public function __construct()
