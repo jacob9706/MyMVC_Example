@@ -1,8 +1,7 @@
 <?php
 /**
  * User: Jacob Ebey
- * Date: 11/21/12
- * Time: 7:39 PM
+ * Date: 11/21/12PM
  * URL: Router.php
  */
 
@@ -23,6 +22,10 @@ class Router
      */
     public function route()
     {
+        /*********************************************
+         * Retrieve info from the url to parse for
+         * controller, method and variables
+         *********************************************/
         $pathInfo = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
 
         /*********************************************
@@ -97,16 +100,16 @@ class Router
             if (class_exists($class)) {
                 $controller = new $class;
             } else {
-                die('Error: Controller ' . $class . ' not found.');
+                raise_error("Controller {$class} not fount");
             }
 
             if (method_exists($controller, $this->method)) {
                 $controller->{$this->method}($this->getVars, $_POST);
             } else {
-                die('Error: Method ' . $this->method . ' not found.');
+                raise_error("Method {$this->method} not fount");
             }
         } else {
-            die('Error: File ' . $target . ' not found.');
+            raise_error("File {$target} not found");
         }
     }
 }

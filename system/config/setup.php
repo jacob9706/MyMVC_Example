@@ -29,6 +29,12 @@ $CONFIG_DB['db_name'] = 'application/databases/blog.sqlite';
 
 
 
+$CONFIG_ERRORS = array();
+$CONFIG_ERRORS['error_template'] = 'system/core/util/error_template.php';
+
+$GLOBALS['CONFIG_ERRORS'] = $CONFIG_ERRORS;
+
+
 
 // // ==================================================================
 // $CONFIG_DB['type'] = 'mysql';
