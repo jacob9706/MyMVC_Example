@@ -13,7 +13,7 @@ class View_Template
 	private
 	$variables,
 	$render = false;
-
+	
 	/*********************************************
      * The constructor takes ether a string for
      * a single template and an assosiative array

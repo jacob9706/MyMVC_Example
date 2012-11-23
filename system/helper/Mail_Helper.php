@@ -27,7 +27,7 @@ class Mail_Helper
 	    'X-Mailer: PHP/' . phpversion();
 	}
 	*/
-	public function Mailer($to,$from,$subject,$message,$cc,$bcc)
+	public function __construct($to,$from,$subject,$message,$cc,$bcc)
 	{
 		$this->to = $to;
 		$this->from = $from;
