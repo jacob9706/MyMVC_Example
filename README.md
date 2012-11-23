@@ -14,6 +14,11 @@ To create a new controller you want to do the following
  
 class Name_Controller extends Controller_Template
 {
+	// The emulated get vars are optional params in the methods
+	public function index($getVars, $postVars)
+	{
+
+	}
 }
 ```
 You would call this file *name.php* and save it in *application/controllers*
@@ -30,6 +35,10 @@ To add a helper class and make it loadable through 'this->load('helper', 'name')
 
 class Name_Helper extends Controller_Template
 {
+	public function some_method()
+	{
+
+	}
 }
 ```
 
@@ -48,8 +57,26 @@ class Name_Controller extends Controller_Template
     public function __construct()
     {
         $this->load('helper', 'form');
-        $this->helper->some_method();
+        $this->helper->form->some_method();
     }
+}
+```
+
+You can also load helper classes as a specific name
+
+```php
+<?php
+/*
+ * application/controllers/name.php
+ */
+
+class Name_Controller extends Controller_Template
+{
+	public function __construct()
+	{
+		$this->load_as('helper', 'form', 'form2');
+		$this->helper->form2->some_method();
+	}
 }
 ```
 
