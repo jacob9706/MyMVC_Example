@@ -8,29 +8,13 @@
 require_once 'Base_Template.php';
 class Controller_Template extends Base_Template
 {
-    public function load($what, $name)
-    {
-        $class = ucfirst($name) . '_' . ucfirst($what);
-
-    	if ($what == 'helper')
-    	{
-	        require_once 'system/' . $what . '/' . $class . '.php';
-        } elseif ($what == 'model') {
-        	require_once 'application/models/' . $name . '.php';
-        }
-
-        $this->$what->$name = new $class;
-    }
-
-    public function load_as($what, $name, $as)
-    {
-        $class = ucfirst($name) . '_' . ucfirst($what);
-        require_once 'system/' . $what . '/' . $class . '.php';
-        $this->$what->$as = new $class;
-    }
-
+    /*********************************************
+     * This is used to load a new view. All it
+     * does is instantiate a new View_Template
+     * object
+     *********************************************/
     public function view($templates, array $variables)
     {
-    	new View_Template($templates, $variables);
+        new View_Template($templates, $variables);
     }
 }

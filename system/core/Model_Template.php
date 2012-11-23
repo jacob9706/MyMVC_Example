@@ -6,7 +6,10 @@
  */
 
 require_once 'Base_Template.php';
+
+/*********************************************
+ * As for now it just extends the Base_Template
+ *********************************************/
 class Model_Template extends Base_Template
 {
-
 }

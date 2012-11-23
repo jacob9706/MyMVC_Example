@@ -7,10 +7,19 @@
 
 class View_Template
 {
+	/*********************************************
+     * Private variables
+     *********************************************/
 	private
 	$variables,
 	$render = false;
 
+	/*********************************************
+     * The constructor takes ether a string for
+     * a single template and an assosiative array
+     * of key value pares that are parsed into 
+     * variables to be used within the templates
+     *********************************************/
 	public function __construct($templates, array $variables)
 	{
 		$this->variables = $variables;
@@ -32,6 +41,12 @@ class View_Template
 		}
 	}
 
+	/*********************************************
+     * On destruction we parse each thing in the
+     * $this->variables array into the variabels
+     * for the templates and load the view files
+     * if they exist
+     *********************************************/
 	public function __destruct()
 	{
 		foreach ($this->variables as $var => &$val) {

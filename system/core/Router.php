@@ -5,6 +5,7 @@
  * Time: 7:39 PM
  * URL: Router.php
  */
+
 class Router
 {
     /*********************************************
@@ -75,8 +76,19 @@ class Router
             }
         }
 
+        /*********************************************
+         * Build the path to the file to load the
+         * class and methods from
+         *********************************************/
         $target = 'application' . DS . 'controllers' . DS . $this->class . '.php';
 
+        /*********************************************
+         * Check if the file exists and if it does
+         * include it and check if the class and
+         * method exists. If they do we create a new
+         * instance of the class and invoke the
+         * method
+         *********************************************/
         if (file_exists($target)) {
             require_once $target;
 
@@ -96,10 +108,5 @@ class Router
         } else {
             die('Error: File ' . $target . ' not found.');
         }
-    }
-
-    function __autoload($class)
-    {
-        require_once 'system/util/' . $class;
     }
 }

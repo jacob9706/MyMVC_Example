@@ -6,17 +6,17 @@ class Form_Helper{
 
     var $formId;
 
+    var $html = array();
 
 
-    function formBuilder(){
 
-
+    function formBuilder() {
 
     }
 
 
 
-    function input($label,$name,$value='',$params=''){
+    function input($label,$name,$value='',$params='') {
 
         if ($value != '') {
 
@@ -38,6 +38,7 @@ class Form_Helper{
             $parameters = $params;
         }
 
+        $this->html[] = "<label for=\"$name\">$label</label> <input type=\"text\" name=\"$name\" $value $parameters /> <br/> \n";
         return "<label for=\"$name\">$label</label> <input type=\"text\" name=\"$name\" $value $parameters /> <br/> \n";
 
     }
@@ -60,6 +61,7 @@ class Form_Helper{
 
         }
 
+        $this->html[] = "<label for=\"$name\">$label</label> <textarea name=\"$name\" $parameters >$value</textarea><br/> \n";
         return "<label for=\"$name\">$label</label> <textarea name=\"$name\" $parameters >$value</textarea><br/> \n";
 
     }
@@ -102,6 +104,7 @@ class Form_Helper{
 
         }
 
+        $this->html[] = "<label for=\"$name\">$label</label><select name=\"$name\" $parameters >$values\n</select> <br/> \n";
         return "<label for=\"$name\">$label</label><select name=\"$name\" $parameters >$values\n</select> <br/> \n";
 
     }
@@ -128,6 +131,7 @@ class Form_Helper{
 
         }
 
+        $this->html[] = "<input type=\"hidden\" name=\"$name\" $value $parameters />";
         return "<input type=\"hidden\" name=\"$name\" $value $parameters />";
 
     }
@@ -138,6 +142,7 @@ class Form_Helper{
 
         $this->formId=$id;
 
+        $this->html[] = "<form action=\"$action\" method=\"$method\" id=\"$id\"><br style=\"clear:both;\" />";
         return "<form action=\"$action\" method=\"$method\" id=\"$id\"><br style=\"clear:both;\" />";
 
     }
@@ -152,6 +157,7 @@ class Form_Helper{
 
         }
 
+        $this->html[] = "<input type=\"submit\" $name value=\"$value\" class=\"submitButton\" />";
         return "<input type=\"submit\" $name value=\"$value\" class=\"submitButton\" />";
 
     }
@@ -218,6 +224,14 @@ class Form_Helper{
 
     ';
 
+}
+
+public function render()
+{
+    foreach ($this->html as &$val) {
+        echo $val;
+    }
+    echo '</form>';
 }
 
 
