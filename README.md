@@ -33,7 +33,7 @@ To add a helper class and make it loadable through 'this->load('helper', 'name')
  * system/helper/Name_Helper.php
  */
 
-class Name_Helper extends Controller_Template
+class Name_Helper
 {
 	public function some_method()
 	{
@@ -42,7 +42,7 @@ class Name_Helper extends Controller_Template
 }
 ```
 
-You would call this file *name.php* and save it in *system/helper*
+You would call this file *Name_Helper.php* and save it in *system/helper*
 
 To use this new helper you would do the folloing
 
