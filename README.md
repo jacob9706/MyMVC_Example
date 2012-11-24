@@ -1,6 +1,6 @@
 Why
 ---
-I have created this simple framework to be the fastest barebone PHP MVC out there.
+I have created this simple framework to be the fastest barebones PHP MVC out there.
 
 Basics
 ------
