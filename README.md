@@ -44,7 +44,7 @@ class Name_Helper
 
 You would call this file *Name_Helper.php* and save it in *system/helper*
 
-To use this new helper you would do the folloing
+To use this new helper you would do the following
 
 ```php	
 <?php
