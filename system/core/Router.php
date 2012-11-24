@@ -11,9 +11,9 @@ class Router
      * Private Variables
      *********************************************/
     private
-        $getVars = array(),
-        $class,
-        $method;
+    $getVars = array(),
+    $class,
+    $method;
 
     /**
      * This is used to route the application to the correct controller
@@ -95,7 +95,9 @@ class Router
         if (file_exists($target)) {
             require_once $target;
 
-            $class = ucfirst($this->class) . '_Controller';
+            $class = $this->ucwordspecific($this->class, '_');
+
+            $class = $class . '_Controller';
 
             if (class_exists($class)) {
                 $controller = new $class;
@@ -111,5 +113,11 @@ class Router
         } else {
             raise_error("File {$target} not found");
         }
+    }
+
+    private function ucwordspecific($str,$delimiter){
+        $delimiter_space = '- ';
+        return str_replace($delimiter_space,$delimiter,ucwords
+            (str_replace($delimiter,$delimiter_space,$str)));
     }
 }
