@@ -63,16 +63,46 @@ class Database_Helper extends PDO
     	return false;
     }
 
-    public function insert($table, $data) {
-    	if (is_array($data)) {
+    // public function insert($table, $data) {
+    // 	if (is_array($data)) {
 
-    		$dataStr = $this->prepBind( $data, ', ' );
-    		$bind = array_values( $data );
+    // 		$dataStr = $this->prepBind( $data, ', ' );
+    // 		$bind = array_values( $data );
 
-    		$sql = "INSERT `$table` SET  $dataStr";
-    		return $this->run($sql, $bind);
-    	}
-    	return false;
+    // 		$sql = "INSERT `$table` SET  $dataStr";
+    // 		return $this->run($sql, $bind);
+    // 	}
+    // 	return false;
+    // }
+
+    public function insert($table, Array $arrayOfValues)
+    {
+        $query = 'INSERT INTO ' . $table;
+        $columns = '';
+        $values = '';
+        $executeVar = array();
+        if ($this->isAssoc($arrayOfValues)) {
+            $delimiter = '';
+            foreach ($arrayOfValues as $column =>$value) {
+                $columns .= $delimiter . $column;
+                $values .= $delimiter . ':' . $column;
+                $executeVar[(':' . $column)] = $value;
+                $delimiter = ', ';
+            }
+
+            $query .= '(' . $columns . ')' . ' VALUES(' . $values . ')';
+            // echo $query;
+            // print_r($executeVar);
+            $query = $this->prepare($query);
+            try {
+                return $query->execute($executeVar);
+            } catch(PDOException $e) {
+                return false;
+            }
+        } else {
+            $debug = debug_backtrace();
+            die('Error: Second param of ' . $debug[0]['function'] . '() must be an associative array, ' . $debug[0]['file'] . ": line " . $debug[0]['line']);
+        }
     }
 
     public function delete($table, $where, $limit=false) {
@@ -97,5 +127,10 @@ class Database_Helper extends PDO
             return crypt($str, $blowfish_salt);
         }
         return sha1($str . $salt);        
+    }
+
+    private function isAssoc($arr)
+    {
+        return array_keys($arr) !== range(0, count($arr) - 1);
     }
 }
