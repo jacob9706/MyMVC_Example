@@ -12,8 +12,6 @@ class Index_Controller extends Controller_Template
         $data = array(
             'test' => 'Hello World'
         );
-
-        echo 'test again';
         
         $this->view('test',$data);
     }
