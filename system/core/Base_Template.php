@@ -10,7 +10,7 @@ class Base_Template
     /*********************************************
      * The load method is used to load a utility
      * into the class. helpers and models are the
-     * only onces currently supported
+     * only onces currently supported at this time
      *********************************************/
     public function load($what, $name)
     {
