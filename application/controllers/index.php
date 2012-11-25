@@ -13,7 +13,7 @@ class Index_Controller extends Controller_Template
             'test' => 'Hello World'
         );
 
-        echo 'test';
+        echo 'test again';
         
         $this->view('test',$data);
     }
