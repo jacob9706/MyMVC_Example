@@ -4,7 +4,7 @@ I have created this simple framework to be the fastest barebones PHP MVC out the
 
 Basics
 ------
-To create a new controller you want to do the following
+To create a new controller you woud do the following
 
 ```php
 <?php
