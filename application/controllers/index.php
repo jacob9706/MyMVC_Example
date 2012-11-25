@@ -7,20 +7,12 @@
 
 class Index_Controller extends Controller_Template
 {
-	public function __construct()
-	{
-		$this->load('helper', 'form');
-        $this->load('helper', 'sanitize');
-        $this->load('helper', 'html');
-        $this->load('model', 'test');
-	}
-
     public function index($getVars)
     {
-        $this->helper->sanitize->sanitize($getVars, array('name' => 'string', 'age' => 'double', 'test' => 'boolean'));
-
-        $data = $this->model->test->test();
+        $data = array(
+            'test' => 'Hello World'
+        );
         
-        $this->view('view',$data[0]);
+        $this->view('test',$data);
     }
 }
