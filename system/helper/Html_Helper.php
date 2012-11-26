@@ -16,7 +16,7 @@ class Html_Helper
 		$vars = array();
 		if (is_array($variables)) {
 			foreach ($variables as $key => $value) {
-				$vars[] = urlencode($key) . '&' . urlencode($value);
+				$vars[] = urlencode($key) . '=' . urlencode($value);
 			}
 			$vars = implode("/", $vars);
 		} else {
