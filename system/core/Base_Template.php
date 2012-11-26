@@ -18,12 +18,12 @@ class Base_Template
 
     	if ($what == 'helper')
     	{
-	        require_once 'system/' . $what . '/' . $class . '.php';
+	        require_once 'system' . DS . $what . DS . $class . '.php';
         } 
         
         elseif ($what == 'model')
         {
-        	require_once 'application/models/' . $name . '.php';
+        	require_once 'application' . DS . 'models' . DS . $name . '.php';
         }
 
         $this->$what->$name = new $class;
@@ -41,12 +41,12 @@ class Base_Template
 
         if ($what == 'helper')
         {
-            require_once 'system/' . $what . '/' . $class . '.php';
+            require_once 'system' . DS . $what . DS . $class . '.php';
         } 
         
         elseif ($what == 'model')
         {
-            require_once 'application/models/' . $name . '.php';
+            require_once 'application' . DS . 'models' . DS . $name . '.php';
         }
 
         $this->$what->$as = new $class;
