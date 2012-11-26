@@ -17,4 +17,18 @@ class Controller_Template extends Base_Template
     {
         new View_Template($templates, $variables);
     }
+
+    public function redirect($controller, $method = 'index', $variables = "")
+	{
+		$vars = array();
+		if (is_array($variables)) {
+			foreach ($variables as $key => $value) {
+				$vars[] = urlencode($key) . '&' . urlencode($value);
+			}
+			$vars = implode("/", $vars);
+		} else {
+			$vars = $variables;
+		}
+		header('Location: http://' . $_SERVER['HTTP_HOST'] . array_shift(explode("index.php", $_SERVER['REQUEST_URI'])) . 'index.php/' . $controller . '/' . $method . '/' . $vars);
+	}
 }
