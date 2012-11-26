@@ -17,7 +17,7 @@ class Index_Controller extends Controller_Template
     {
     	// $this->model->post->setup();
 
-        $posts = $this->model->post->load();
+        $posts = $this->model->post->load_post();
 
         $data = array(
         	'html' => $this->helper->html,
@@ -29,7 +29,7 @@ class Index_Controller extends Controller_Template
     public function article($getVars)
     {
     	if (!empty($getVars['id'])) {
-	    	$post = $this->model->post->load($getVars['id']);
+	    	$post = $this->model->post->load_post($getVars['id']);
     	}
     	else {
     		$post = null;
@@ -45,6 +45,27 @@ class Index_Controller extends Controller_Template
 
     public function create($getVars, $postVars)
     {
-    	
+        $data = array(
+            'html' => $this->helper->html,
+            'show_form' => true,
+            'errors' => ''
+        );
+
+        if (!empty($postVars)) {
+            if ($this->model->post->add_post($postVars)) {
+                $data['show_form'] = false;
+            }
+        }
+
+        $this->view('create', $data);
+    }
+
+    public function remove($getVars, $postVars)
+    {
+        if (isset($postVars['id'])) {
+            if ($this->model->post->remove_post($postVars['id'])) {
+                
+            }
+        }
     }
 }

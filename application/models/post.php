@@ -8,20 +8,28 @@ class Post_Model extends Model_Template
 		$this->load('helper', 'sanitize');
 	}
 
-	public function add(array $data)
+	public function add_post(array $data)
 	{
 		$allowed = array(
 			'name' => 'plain',
 			'post' => 'nohtml'
 		);
-		$this->helper->sanitize->sanitize($data);
+		$this->helper->sanitize->sanitize($data, $allowed);
+
+		$data = array_filter($data);
 
 		if (!empty($data) && sizeof($data) == 2) {
 			return $this->helper->db->insert('post', $data);
 		}
 	}
 
-	public function load($post = null)
+	public function remove_post($id)
+	{
+		$id = $this->helper->sanitize->sanitizeOne($id, 'sql');
+		$this->helper->db->delete('post', "id='{$id}'", 1);
+	}
+
+	public function load_post($post = null)
 	{
 		if (!empty($post)) {
 			$post = (int)$post;
