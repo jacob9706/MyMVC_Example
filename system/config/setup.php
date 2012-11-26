@@ -5,7 +5,7 @@ $CONFIG_DB = array();
  * Defines type of database to use, You can use any of the database types supported by your current PDO instilation.
  * To check what type your current system supports, use the function php_info();
  */
-$CONFIG_DB['dsn'] = 'sqlite:application/db/test.db';
+$CONFIG_DB['dsn'] = 'sqlite:application/db/database.sqlite3';
 $CONFIG_DB['user'] = null;
 $CONFIG_DB['passwd'] = null;
 $CONFIG_DB['driver_options'] = array(
