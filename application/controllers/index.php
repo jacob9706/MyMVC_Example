@@ -63,9 +63,8 @@ class Index_Controller extends Controller_Template
     public function remove($getVars, $postVars)
     {
         if (isset($postVars['id'])) {
-            if ($this->model->post->remove_post($postVars['id'])) {
-                
-            }
+            $this->model->post->remove_post($postVars['id']);
         }
+        $this->redirect('index', 'index');
     }
 }

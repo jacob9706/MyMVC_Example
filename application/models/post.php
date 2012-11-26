@@ -25,8 +25,8 @@ class Post_Model extends Model_Template
 
 	public function remove_post($id)
 	{
-		$id = $this->helper->sanitize->sanitizeOne($id, 'sql');
-		$this->helper->db->delete('post', "id='{$id}'", 1);
+		$id = $this->helper->sanitize->sanitizeOne($id, 'int');
+		$this->helper->db->delete('post', array('id' => $id));
 	}
 
 	public function load_post($post = null)
